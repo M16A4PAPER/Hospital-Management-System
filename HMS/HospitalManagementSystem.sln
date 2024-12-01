@@ -5,8 +5,6 @@ VisualStudioVersion = 17.11.35222.181
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HMS.ConsoleApp", "HospitalManagementSystem.vcxproj", "{C9144803-73D1-4B49-AD47-462DAEF281AE}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HMS.DomainObjects0", "..\HMS.DomainObjects\HMS.DomainObjects.vcxproj", "{F5053332-E8D5-4FE0-BD20-873BCABB6B56}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HMS.DomainObjects1", "..\HMS.DomainObjects1\HMS.DomainObjects1.vcxproj", "{93C908A1-796B-4CD8-93EE-5844B2DF0928}"
 EndProject
 Global
@@ -25,14 +23,6 @@ Global
 		{C9144803-73D1-4B49-AD47-462DAEF281AE}.Release|x64.Build.0 = Release|x64
 		{C9144803-73D1-4B49-AD47-462DAEF281AE}.Release|x86.ActiveCfg = Release|Win32
 		{C9144803-73D1-4B49-AD47-462DAEF281AE}.Release|x86.Build.0 = Release|Win32
-		{F5053332-E8D5-4FE0-BD20-873BCABB6B56}.Debug|x64.ActiveCfg = Debug|x64
-		{F5053332-E8D5-4FE0-BD20-873BCABB6B56}.Debug|x64.Build.0 = Debug|x64
-		{F5053332-E8D5-4FE0-BD20-873BCABB6B56}.Debug|x86.ActiveCfg = Debug|Win32
-		{F5053332-E8D5-4FE0-BD20-873BCABB6B56}.Debug|x86.Build.0 = Debug|Win32
-		{F5053332-E8D5-4FE0-BD20-873BCABB6B56}.Release|x64.ActiveCfg = Release|x64
-		{F5053332-E8D5-4FE0-BD20-873BCABB6B56}.Release|x64.Build.0 = Release|x64
-		{F5053332-E8D5-4FE0-BD20-873BCABB6B56}.Release|x86.ActiveCfg = Release|Win32
-		{F5053332-E8D5-4FE0-BD20-873BCABB6B56}.Release|x86.Build.0 = Release|Win32
 		{93C908A1-796B-4CD8-93EE-5844B2DF0928}.Debug|x64.ActiveCfg = Debug|x64
 		{93C908A1-796B-4CD8-93EE-5844B2DF0928}.Debug|x64.Build.0 = Debug|x64
 		{93C908A1-796B-4CD8-93EE-5844B2DF0928}.Debug|x86.ActiveCfg = Debug|Win32

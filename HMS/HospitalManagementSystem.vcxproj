@@ -128,15 +128,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\HMS.DomainObjects\AdmissionRecord.cpp" />
-    <ClCompile Include="..\HMS.DomainObjects\Appointment.cpp" />
-    <ClCompile Include="..\HMS.DomainObjects\AppointmentStatus.cpp" />
-    <ClCompile Include="..\HMS.DomainObjects\Billing.cpp" />
-    <ClCompile Include="..\HMS.DomainObjects\Doctor.cpp" />
-    <ClCompile Include="..\HMS.DomainObjects\Patient.cpp" />
-    <ClCompile Include="..\HMS.DomainObjects\PatientType.cpp" />
-    <ClCompile Include="..\HMS.DomainObjects\Specialization.cpp" />
+    <ClCompile Include="AdmissionRecord1.cpp" />
+    <ClCompile Include="Appointment1.cpp" />
+    <ClCompile Include="AppointmentStatus1.cpp" />
+    <ClCompile Include="Billing1.cpp" />
+    <ClCompile Include="Doctor.cpp" />
+    <ClCompile Include="Patient.cpp" />
+    <ClCompile Include="PatientType1.cpp" />
     <ClCompile Include="Program.cpp" />
+    <ClCompile Include="Specialization1.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

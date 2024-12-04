@@ -13,10 +13,7 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\Enums">
-      <UniqueIdentifier>{21f65a90-2e8e-4dcd-a8f7-afd0b46e84ec}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Entities">
+    <Filter Include="Entities">
       <UniqueIdentifier>{991c931d-07cd-4bc2-aa65-6a62e1e3b7f9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -24,29 +21,29 @@
     <ClCompile Include="Program.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\HMS.DomainObjects\AppointmentStatus.cpp">
-      <Filter>Source Files\Enums</Filter>
+    <ClCompile Include="AdmissionRecord1.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\HMS.DomainObjects\PatientType.cpp">
-      <Filter>Source Files\Enums</Filter>
+    <ClCompile Include="Appointment1.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\HMS.DomainObjects\AdmissionRecord.cpp">
-      <Filter>Source Files\Entities</Filter>
+    <ClCompile Include="AppointmentStatus1.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\HMS.DomainObjects\Appointment.cpp">
-      <Filter>Source Files\Entities</Filter>
+    <ClCompile Include="Billing1.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\HMS.DomainObjects\Billing.cpp">
-      <Filter>Source Files\Entities</Filter>
+    <ClCompile Include="Doctor.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\HMS.DomainObjects\Doctor.cpp">
-      <Filter>Source Files\Entities</Filter>
+    <ClCompile Include="Patient.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\HMS.DomainObjects\Patient.cpp">
-      <Filter>Source Files\Entities</Filter>
+    <ClCompile Include="PatientType1.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\HMS.DomainObjects\Specialization.cpp">
-      <Filter>Source Files\Entities</Filter>
+    <ClCompile Include="Specialization1.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

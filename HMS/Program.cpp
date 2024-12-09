@@ -1,9 +1,9 @@
 #include <iostream>
 #include "Billing1.cpp"
 #include "AdmissionRecord1.cpp"
-#include "Appointment1.cpp"
 #include "Doctor.cpp"
 #include "Patient.cpp"
+#include "Appointment.cpp"
 
 using namespace std;
 
@@ -59,18 +59,117 @@ int main() {
 }
 
 void billingOptions() {
-	cout << "Billing Options Menu" << endl;
-	// Add functionality for billing operations
+	Billing billingManager; // Create an instance of the Billing class
+	int choice;
+
+	do {
+		cout << "\nBilling Menu:" << endl;
+		cout << "1. Generate Bill" << endl;
+		cout << "2. Display All Bills" << endl;
+		cout << "3.Save Bills" << endl;
+		cout << "4.Load Bills" << endl;
+		cout << "0. Return to Main Menu" << endl;
+		cout << "Enter your choice: ";
+		cin >> choice;
+
+		switch (choice) {
+		case 1:
+			billingManager.generateBill();
+			break;
+		case 2:
+			billingManager.displayBills();
+			break;
+		case 3:
+			billingManager.saveBills();
+			break;
+		case 4:
+			billingManager.loadBills();
+			break;
+		case 0:
+			cout << "Returning to Main Menu..." << endl;
+			break;
+		default:
+			cout << "Invalid choice. Please try again." << endl;
+		}
+	} while (choice != 0);
 }
 
 void admissionRecordOptions() {
-	cout << "Admission Record Options Menu" << endl;
-	// Add functionality for admission record operations
+	AdmissionRecord1 admissionManager; // Create an instance of AdmissionRecord1 class
+
+	int choice;
+	do {
+		cout << "\nAdmission Record Options Menu:" << endl;
+		cout << "1. Add Admission Record" << endl;
+		cout << "2. Discharge Patient" << endl;
+		cout << "3. Display All Admission Records" << endl;
+		cout << "4. Save Records to File" << endl;
+		cout << "5. Load Records from File" << endl;
+		cout << "0. Return to Main Menu" << endl;
+		cout << "Enter your choice: ";
+		cin >> choice;
+
+		switch (choice) {
+		case 1:
+			admissionManager.admitPatient();
+			break;
+		case 2:
+			admissionManager.dischargePatient();
+			break;
+		case 3:
+			admissionManager.displayRecords();
+			break;
+		case 4:
+			admissionManager.saveRecords();
+			cout << "Records saved to file successfully!" << endl;
+			break;
+		case 5:
+			admissionManager.loadRecords();
+			cout << "Records loaded from file successfully!" << endl;
+			break;
+		case 0:
+			cout << "Returning to Main Menu..." << endl;
+			break;
+		default:
+			cout << "Invalid choice. Please try again." << endl;
+		}
+	} while (choice != 0);
 }
 
 void appointmentOptions() {
-	cout << "Appointment Options Menu" << endl;
-	// Add functionality for appointment operations
+	Appointment appointmentManager; // Create an instance of Appointment class
+
+	int choice;
+	do {
+		cout << "\nAppointment Options Menu:" << endl;
+		cout << "1. Schedule a New Appointment" << endl;
+		cout << "2. Display All Appointments" << endl;
+		cout << "3. Search for an Appointment by ID" << endl;
+		cout << "4. Cancel an Appointment" << endl;
+		cout << "0. Return to Main Menu" << endl;
+		cout << "Enter your choice: ";
+		cin >> choice;
+
+		switch (choice) {
+		case 1:
+			appointmentManager.scheduleAppointment();
+			break;
+		case 2:
+			appointmentManager.displayAppointments();
+			break;
+		case 3:
+			appointmentManager.searchAppointment();
+			break;
+		case 4:
+			appointmentManager.cancelAppointment();
+			break;
+		case 0:
+			cout << "Returning to Main Menu..." << endl;
+			break;
+		default:
+			cout << "Invalid choice. Please try again." << endl;
+		}
+	} while (choice != 0);
 }
 
 void doctorOptions() {
@@ -132,5 +231,3 @@ void patientOptions() {
 		}
 	} while (choice != 0);
 }
-
-

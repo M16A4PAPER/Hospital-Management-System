@@ -24,7 +24,7 @@
     <ClCompile Include="AdmissionRecord1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Appointment1.cpp">
+    <ClCompile Include="Appointment.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AppointmentStatus1.cpp">

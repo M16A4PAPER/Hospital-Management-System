@@ -21,7 +21,6 @@ public:
 		loadDoctors(); // Load existing doctor data from file
 	}
 
-	// Function to add a new doctor
 	void addDoctor() {
 		if (doctorCount >= 100) {
 			cout << "Error: Cannot add more doctors, the limit is reached." << endl;
@@ -67,7 +66,6 @@ public:
 		cout << "Doctor added successfully!" << endl;
 	}
 
-	// Function to save all doctors to a file
 	void saveDoctors() {
 		ofstream file("doctors.txt"); // Open a file for writing
 		if (file.is_open()) {
@@ -83,7 +81,6 @@ public:
 		}
 	}
 
-	// Function to load doctors from the file
 	void loadDoctors() {
 		ifstream file("doctors.txt"); // Open the file for reading
 		if (file.is_open()) {
@@ -117,7 +114,6 @@ public:
 		}
 	}
 
-	// Function to assign a doctor to a patient
 	void assignDoctorToPatient() {
 		if (doctorCount == 0) {
 			cout << "Error: No doctors available." << endl;
@@ -144,7 +140,6 @@ public:
 		}
 	}
 
-	// Function to display consultation statistics for all doctors
 	void displayConsultationStatistics() {
 		if (doctorCount == 0) {
 			cout << "Error: No doctors in the system to display statistics." << endl;

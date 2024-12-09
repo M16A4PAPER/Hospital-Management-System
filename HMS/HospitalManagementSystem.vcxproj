@@ -129,7 +129,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AdmissionRecord1.cpp" />
-    <ClCompile Include="Appointment1.cpp" />
+    <ClCompile Include="Appointment.cpp" />
     <ClCompile Include="AppointmentStatus1.cpp" />
     <ClCompile Include="Billing1.cpp" />
     <ClCompile Include="Doctor.cpp" />

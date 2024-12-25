@@ -18,7 +18,6 @@ public:
 		loadPatients(); // Load existing patient data from file
 	}
 
-	// Function to add a new patient
 	void addPatient() {
 		if (patientCount >= 100) {
 			cout << "Error: Cannot add more patients, the limit is reached." << endl;
@@ -73,7 +72,6 @@ public:
 		cout << "Patient added successfully!" << endl;
 	}
 
-	// Function to search for a patient by ID
 	void searchPatient() {
 		int id;
 		cout << "Enter Patient ID to search: ";
@@ -96,7 +94,6 @@ public:
 		}
 	}
 
-	// Function to display all patients
 	void displayPatients() {
 		if (patientCount == 0) {
 			cout << "No patients to display." << endl;
@@ -112,7 +109,6 @@ public:
 		}
 	}
 
-	// Function to save all patients to a file
 	void savePatients() {
 		ofstream outFile("patients.txt"); // Open file for writing
 
@@ -133,7 +129,6 @@ public:
 		cout << "Patients saved successfully!" << endl;
 	}
 
-	// Function to load patients from the file
 	void loadPatients() {
 		ifstream inFile("patients.txt"); // Open file for reading
 

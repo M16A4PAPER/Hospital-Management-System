@@ -1,1 +1,2 @@
 1 TestPatientOne 15 Osteomalacia
+2 TestPatientTwo 16 Brain

@@ -75,7 +75,6 @@ public:
 		cout << "All bills have been saved successfully." << endl;
 	}
 
-
 	void loadBills() {
 		ifstream inFile("bills.txt"); // Open the file for reading
 
@@ -97,3 +96,8 @@ public:
 	}
 
 };
+
+//Constructor in C++ is a special method that is invoked automatically at the time an object of a class is created.
+// It is used to initialize the data members of new objects generally.
+// The constructor in C++ has the same name as the class or structure.
+// It constructs the values i.e. provides data for the object which is why it is known as a constructor.

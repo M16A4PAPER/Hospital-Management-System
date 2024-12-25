@@ -38,7 +38,7 @@ public:
 			}
 		}
 
-		appointmentID[appointmentCount] = appID;
+		appointmentID[appointmentCount] = appID; //Array to store appointment Ids
 
 		cout << "Enter Patient ID: ";
 		cin >> patientIDInput;

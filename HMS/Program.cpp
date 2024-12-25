@@ -94,6 +94,7 @@ void billingOptions() {
 	} while (choice != 0);
 }
 
+
 void admissionRecordOptions() {
 	AdmissionRecord1 admissionManager; // Create an instance of AdmissionRecord1 class
 
@@ -134,6 +135,7 @@ void admissionRecordOptions() {
 	} while (choice != 0);
 }
 
+
 void appointmentOptions() {
 	Appointment appointmentManager; // Create an instance of Appointment class
 
@@ -144,6 +146,8 @@ void appointmentOptions() {
 		cout << "2. Display All Appointments" << endl;
 		cout << "3. Search for an Appointment by ID" << endl;
 		cout << "4. Cancel an Appointment" << endl;
+		cout << "5. Save Appointments to File" << endl;
+		cout << "6. Load Appointments from File" << endl;
 		cout << "0. Return to Main Menu" << endl;
 		cout << "Enter your choice: ";
 		cin >> choice;
@@ -160,6 +164,12 @@ void appointmentOptions() {
 			break;
 		case 4:
 			appointmentManager.cancelAppointment();
+			break;
+		case 5:
+			appointmentManager.saveAppointments();
+			break;
+		case 6:
+			appointmentManager.loadAppointments();
 			break;
 		case 0:
 			cout << "Returning to Main Menu..." << endl;
@@ -187,11 +197,11 @@ void doctorOptions() {
 
 		switch (choice) {
 		case 1:
-			doctorManager.addDoctor(); 
+			doctorManager.addDoctor();
 			break;
 
 		case 2:
-			doctorManager.assignDoctorToPatient(); 
+			doctorManager.assignDoctorToPatient();
 			break;
 
 		case 3:

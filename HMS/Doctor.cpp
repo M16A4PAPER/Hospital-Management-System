@@ -57,7 +57,7 @@ public:
 			cout << "Error: Specialization cannot be empty." << endl;
 			return; // Stop if specialization is empty
 		}
-		specialization[doctorCount] = spec;
+		specialization[doctorCount] = spec; //Array to store doctor specializations.
 
 		consultations[doctorCount] = 0; // Start with 0 consultations
 		doctorCount++; // Increase the doctor count
@@ -72,25 +72,43 @@ public:
 			return; // Stop if no doctors are available
 		}
 
-		int id;
-		cout << "Enter Doctor ID to assign: ";
-		cin >> id;
+		int doctorIDInput;
+		int patientIDInput;
 
-		bool found = false;
+		cout << "Enter Doctor ID to assign: ";
+		cin >> doctorIDInput;
+
+		// Check if the doctor exists
+		bool doctorFound = false;
+		int doctorIndex = -1; // Index of the doctor in the array
 		for (int i = 0; i < doctorCount; i++) {
-			if (doctorID[i] == id) {
-				consultations[i]++; // Increase the consultation count
-				found = true;
-				saveDoctors(); // Save updated consultation data to file
-				cout << "Doctor " << doctorName[i] << " has been assigned to a patient." << endl;
+			if (doctorID[i] == doctorIDInput) {
+				doctorFound = true;
+				doctorIndex = i;
 				break;
 			}
 		}
 
-		if (!found) {
-			cout << "Error: No doctor found with ID " << id << "." << endl;
+		if (!doctorFound) {
+			cout << "Error: No doctor found with ID " << doctorIDInput << "." << endl;
+			return;
 		}
+
+		cout << "Enter Patient ID to assign to Doctor " << doctorName[doctorIndex] << ": ";
+		cin >> patientIDInput;
+
+		// For simplicity, no patient validation logic is included here.
+
+		// Increment the doctor's consultation count
+		consultations[doctorIndex]++;
+		saveDoctors(); // Save updated doctor data to file
+
+		cout << "Doctor " << doctorName[doctorIndex]
+			<< " has been assigned to Patient ID " << patientIDInput
+			<< ". Total consultations: " << consultations[doctorIndex] << endl;
 	}
+
+
 
 	void displayConsultationStatistics() {
 		if (doctorCount == 0) {

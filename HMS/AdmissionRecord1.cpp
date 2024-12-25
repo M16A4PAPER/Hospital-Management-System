@@ -104,7 +104,6 @@ public:
 		cout << "All admission records have been saved successfully." << endl;
 	}
 
-
 	void loadRecords() {
 		ifstream inFile("admission_records.txt"); // Open the file for reading
 

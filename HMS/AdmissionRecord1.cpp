@@ -85,41 +85,52 @@ public:
 	}
 
 	void saveRecords() {
-		ofstream file("admission_records.txt");
-		if (file.is_open()) {
-			for (int i = 0; i < recordCount; i++) {
-				file << recordId[i] << "," << patientId[i] << ","
-					<< admissionDate[i] << "," << (dischargeDate[i].empty() ? "Not Discharged" : dischargeDate[i]) << endl;
-			}
-			file.close();
+		ofstream outFile("admission_records.txt"); // Open the file for writing
+
+		if (!outFile) {
+			cout << "Error: Could not open file for saving admission records." << endl;
+			return; // Stop if the file cannot be opened
 		}
-		else {
-			cout << "Error: Could not open file to save data." << endl;
+
+		// Write all admission records to the file
+		for (int i = 0; i < recordCount; i++) {
+			outFile << recordId[i] << " "
+				<< patientId[i] << " "
+				<< admissionDate[i] << " "
+				<< (dischargeDate[i].empty() ? "-" : dischargeDate[i]) << endl;
 		}
+
+		outFile.close(); // Close the file
+		cout << "All admission records have been saved successfully." << endl;
 	}
+
 
 	void loadRecords() {
-		ifstream file("admission_records.txt");
-		if (file.is_open()) {
-			string line;
-			while (getline(file, line)) {
-				size_t pos1 = line.find(',');
-				size_t pos2 = line.find(',', pos1 + 1);
-				size_t pos3 = line.find(',', pos2 + 1);
+		ifstream inFile("admission_records.txt"); // Open the file for reading
 
-				recordId[recordCount] = stoi(line.substr(0, pos1));
-				patientId[recordCount] = stoi(line.substr(pos1 + 1, pos2 - pos1 - 1));
-				admissionDate[recordCount] = line.substr(pos2 + 1, pos3 - pos2 - 1);
-				dischargeDate[recordCount] = line.substr(pos3 + 1);
-				if (dischargeDate[recordCount] == "Not Discharged") {
-					dischargeDate[recordCount] = "";
-				}
-				recordCount++;
+		if (!inFile) {
+			cout << "No existing admission records found. Starting fresh." << endl;
+			return; // Stop if the file doesn't exist
+		}
+
+		recordCount = 0; // Reset the record count to load fresh data
+
+		// Read data from the file
+		while (inFile >> recordId[recordCount] >> patientId[recordCount]) {
+			inFile.ignore(); // Handle the space between fields
+			getline(inFile, admissionDate[recordCount], ' '); // Read until space
+			getline(inFile, dischargeDate[recordCount]); // Read until the end of the line
+
+			// If dischargeDate is "-", it means the patient is not discharged
+			if (dischargeDate[recordCount] == "-") {
+				dischargeDate[recordCount] = "";
 			}
-			file.close();
+
+			recordCount++; // Increment record count for each record read
 		}
-		else {
-			cout << "No previous admission records found." << endl;
-		}
+
+		inFile.close(); // Close the file
+		cout << "Admission records loaded successfully. Total records: " << recordCount << endl;
 	}
+
 };

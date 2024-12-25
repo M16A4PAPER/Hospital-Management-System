@@ -56,40 +56,44 @@ public:
 	}
 
 	void saveBills() {
-		ofstream file("billing_records.txt"); // Open file for writing
-		if (file.is_open()) {
-			for (int i = 0; i < billCount; i++) {
-				// Save each bill's details in a comma-separated format
-				file << billingID[i] << "," << patientID[i] << ","
-					<< consultationFee[i] << "," << additionalCharges[i] << endl;
-			}
-			file.close(); // Close the file
+		ofstream outFile("bills.txt"); // Open the file for writing
+
+		if (!outFile) {
+			cout << "Error: Could not open file for saving bills." << endl;
+			return; // Stop if the file cannot be opened
 		}
-		else {
-			cout << "Error: Could not open file to save data." << endl;
+
+		// Write all bills to the file
+		for (int i = 0; i < billCount; i++) {
+			outFile << billingID[i] << " "
+				<< patientID[i] << " "
+				<< consultationFee[i] << " "
+				<< additionalCharges[i] << endl;
 		}
+
+		outFile.close(); // Close the file
+		cout << "All bills have been saved successfully." << endl;
 	}
+
 
 	void loadBills() {
-		ifstream file("billing_records.txt"); // Open file for reading
-		if (file.is_open()) {
-			string line;
-			while (getline(file, line)) {
-				size_t pos1 = line.find(',');
-				size_t pos2 = line.find(',', pos1 + 1);
-				size_t pos3 = line.find(',', pos2 + 1);
+		ifstream inFile("bills.txt"); // Open the file for reading
 
-				billingID[billCount] = stoi(line.substr(0, pos1));
-				patientID[billCount] = stoi(line.substr(pos1 + 1, pos2 - pos1 - 1));
-				consultationFee[billCount] = stod(line.substr(pos2 + 1, pos3 - pos2 - 1));
-				additionalCharges[billCount] = stod(line.substr(pos3 + 1));
+		if (!inFile) {
+			cout << "No existing bills found. Starting fresh." << endl;
+			return; // Stop if the file doesn't exist
+		}
 
-				billCount++; // Increment bill count
-			}
-			file.close(); // Close the file
+		billCount = 0; // Reset bill count to load fresh data
+
+		// Read data from the file
+		while (inFile >> billingID[billCount] >> patientID[billCount]
+			>> consultationFee[billCount] >> additionalCharges[billCount]) {
+			billCount++; // Increment bill count for each bill read
 		}
-		else {
-			cout << "No previous billing records found." << endl;
-		}
+
+		inFile.close(); // Close the file
+		cout << "Bills loaded successfully. Total bills: " << billCount << endl;
 	}
+
 };

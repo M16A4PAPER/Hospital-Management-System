@@ -121,11 +121,9 @@ void admissionRecordOptions() {
 			break;
 		case 4:
 			admissionManager.saveRecords();
-			cout << "Records saved to file successfully!" << endl;
 			break;
 		case 5:
 			admissionManager.loadRecords();
-			cout << "Records loaded from file successfully!" << endl;
 			break;
 		case 0:
 			cout << "Returning to Main Menu..." << endl;

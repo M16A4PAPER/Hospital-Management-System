@@ -73,55 +73,6 @@ public:
 		cout << "Patient added successfully!" << endl;
 	}
 
-	// Function to save all patients to a file
-	void savePatients() {
-		ofstream file("patients.txt"); // Open a file for writing
-		if (file.is_open()) {
-			for (int i = 0; i < patientCount; i++) {
-				// Save each patient's details to the file, separated by commas
-				file << patientID[i] << "," << patientName[i] << ","
-					<< patientAge[i] << "," << diagnosis[i] << endl;
-			}
-			file.close(); // Close the file after writing
-		}
-		else {
-			cout << "Error: Could not open file to save data." << endl;
-		}
-	}
-
-	// Function to load patients from the file
-	void loadPatients() {
-		ifstream file("patients.txt"); // Open the file for reading
-		if (file.is_open()) {
-			string line;
-			while (getline(file, line)) {
-				// Extract patient details from the line
-				int id, age;
-				string name, diag;
-
-				size_t pos1 = line.find(',');
-				size_t pos2 = line.find(',', pos1 + 1);
-				size_t pos3 = line.find(',', pos2 + 1);
-
-				id = stoi(line.substr(0, pos1));
-				name = line.substr(pos1 + 1, pos2 - pos1 - 1);
-				age = stoi(line.substr(pos2 + 1, pos3 - pos2 - 1));
-				diag = line.substr(pos3 + 1);
-
-				patientID[patientCount] = id;
-				patientName[patientCount] = name;
-				patientAge[patientCount] = age;
-				diagnosis[patientCount] = diag;
-
-				patientCount++; // Increase the patient count
-			}
-			file.close(); // Close the file after reading
-		}
-		else {
-			cout << "No previous patient data found." << endl;
-		}
-	}
-
 	// Function to search for a patient by ID
 	void searchPatient() {
 		int id;
@@ -159,5 +110,49 @@ public:
 				<< ", Age: " << patientAge[i]
 				<< ", Diagnosis: " << diagnosis[i] << endl;
 		}
+	}
+
+	// Function to save all patients to a file
+	void savePatients() {
+		ofstream outFile("patients.txt"); // Open file for writing
+
+		if (!outFile) {
+			cout << "Error: Could not open file for saving patients." << endl;
+			return; // Stop if the file cannot be opened
+		}
+
+		// Write all patient data to the file
+		for (int i = 0; i < patientCount; i++) {
+			outFile << patientID[i] << " "
+				<< patientName[i] << " "
+				<< patientAge[i] << " "
+				<< diagnosis[i] << endl;
+		}
+
+		outFile.close(); // Close the file
+		cout << "Patients saved successfully!" << endl;
+	}
+
+	// Function to load patients from the file
+	void loadPatients() {
+		ifstream inFile("patients.txt"); // Open file for reading
+
+		if (!inFile) {
+			cout << "No existing patients found. Starting fresh." << endl;
+			return; // Stop if the file doesn't exist
+		}
+
+		patientCount = 0; // Reset patient count to load fresh data
+
+		// Read data from the file
+		while (inFile >> patientID[patientCount]
+			>> patientName[patientCount]
+			>> patientAge[patientCount]
+			>> diagnosis[patientCount]) {
+			patientCount++; // Increment patient count for each patient read
+		}
+
+		inFile.close(); // Close the file
+		cout << "Patients loaded successfully. Total patients: " << patientCount << endl;
 	}
 };

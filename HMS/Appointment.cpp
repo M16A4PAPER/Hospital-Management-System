@@ -139,51 +139,45 @@ public:
 	}
 
 	void saveAppointments() {
-		ofstream file("appointments.txt"); // Open a file to write appointment data
-		if (file.is_open()) {
-			for (int i = 0; i < appointmentCount; i++) {
-				file << appointmentID[i] << "," << patientID[i] << ","
-					<< doctorID[i] << "," << appointmentDate[i] << ","
-					<< appointmentTime[i] << endl;
-			}
-			file.close(); // Close the file after saving
+		ofstream outFile("appointments.txt"); // Open the file for writing
+
+		if (!outFile) {
+			cout << "Error: Could not open file for saving appointments." << endl;
+			return; // Stop if the file cannot be opened
 		}
-		else {
-			cout << "Error: Could not open file to save appointment data." << endl;
+
+		// Write all appointments to the file
+		for (int i = 0; i < appointmentCount; i++) {
+			outFile << appointmentID[i] << " "
+				<< patientID[i] << " "
+				<< doctorID[i] << " "
+				<< appointmentDate[i] << " "
+				<< appointmentTime[i] << endl;
 		}
+
+		outFile.close(); // Close the file
+		cout << "Appointments saved successfully!" << endl;
 	}
 
 	void loadAppointments() {
-		ifstream file("appointments.txt"); // Open the file for reading
-		if (file.is_open()) {
-			string line;
-			while (getline(file, line)) {
-				int appID, patientIDInput, doctorIDInput;
-				string date, time;
+		ifstream inFile("appointments.txt"); // Open the file for reading
 
-				size_t pos1 = line.find(',');
-				size_t pos2 = line.find(',', pos1 + 1);
-				size_t pos3 = line.find(',', pos2 + 1);
-				size_t pos4 = line.find(',', pos3 + 1);
-
-				appID = stoi(line.substr(0, pos1));
-				patientIDInput = stoi(line.substr(pos1 + 1, pos2 - pos1 - 1));
-				doctorIDInput = stoi(line.substr(pos2 + 1, pos3 - pos2 - 1));
-				date = line.substr(pos3 + 1, pos4 - pos3 - 1);
-				time = line.substr(pos4 + 1);
-
-				appointmentID[appointmentCount] = appID;
-				patientID[appointmentCount] = patientIDInput;
-				doctorID[appointmentCount] = doctorIDInput;
-				appointmentDate[appointmentCount] = date;
-				appointmentTime[appointmentCount] = time;
-
-				appointmentCount++; // Increase the count after loading an appointment
-			}
-			file.close(); // Close the file after loading
+		if (!inFile) {
+			cout << "No existing appointments found. Starting fresh." << endl;
+			return; // Stop if the file doesn't exist
 		}
-		else {
-			cout << "No previous appointment data found." << endl;
+
+		appointmentCount = 0; // Reset appointment count to load fresh data
+
+		// Read data from the file
+		while (inFile >> appointmentID[appointmentCount] >> patientID[appointmentCount]
+			>> doctorID[appointmentCount] >> appointmentDate[appointmentCount]
+			>> appointmentTime[appointmentCount]) {
+			appointmentCount++; // Increment appointment count for each appointment read
 		}
+
+		inFile.close(); // Close the file
+		cout << "Appointments loaded successfully. Total appointments: " << appointmentCount << endl;
 	}
+
 };

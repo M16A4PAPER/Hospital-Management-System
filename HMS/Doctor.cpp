@@ -66,54 +66,6 @@ public:
 		cout << "Doctor added successfully!" << endl;
 	}
 
-	void saveDoctors() {
-		ofstream file("doctors.txt"); // Open a file for writing
-		if (file.is_open()) {
-			for (int i = 0; i < doctorCount; i++) {
-				// Save each doctor's details to the file, separated by commas
-				file << doctorID[i] << "," << doctorName[i] << ","
-					<< specialization[i] << "," << consultations[i] << endl;
-			}
-			file.close(); // Close the file after writing
-		}
-		else {
-			cout << "Error: Could not open file to save data." << endl;
-		}
-	}
-
-	void loadDoctors() {
-		ifstream file("doctors.txt"); // Open the file for reading
-		if (file.is_open()) {
-			string line;
-			while (getline(file, line)) {
-				// Extract doctor details from the line
-				int id;
-				string name, spec;
-				int consultation;
-
-				size_t pos1 = line.find(',');
-				size_t pos2 = line.find(',', pos1 + 1);
-				size_t pos3 = line.find(',', pos2 + 1);
-
-				id = stoi(line.substr(0, pos1));
-				name = line.substr(pos1 + 1, pos2 - pos1 - 1);
-				spec = line.substr(pos2 + 1, pos3 - pos2 - 1);
-				consultation = stoi(line.substr(pos3 + 1));
-
-				doctorID[doctorCount] = id;
-				doctorName[doctorCount] = name;
-				specialization[doctorCount] = spec;
-				consultations[doctorCount] = consultation;
-
-				doctorCount++; // Increase the doctor count
-			}
-			file.close(); // Close the file after reading
-		}
-		else {
-			cout << "No previous doctor data found." << endl;
-		}
-	}
-
 	void assignDoctorToPatient() {
 		if (doctorCount == 0) {
 			cout << "Error: No doctors available." << endl;
@@ -153,5 +105,47 @@ public:
 				<< ", Specialization: " << specialization[i]
 				<< ", Consultations: " << consultations[i] << endl;
 		}
+	}
+
+	void saveDoctors() {
+		ofstream outFile("doctors.txt"); // Open file for writing
+
+		if (!outFile) {
+			cout << "Error: Could not open file for saving doctors." << endl;
+			return; // Stop if the file cannot be opened
+		}
+
+		// Write all doctor data to the file
+		for (int i = 0; i < doctorCount; i++) {
+			outFile << doctorID[i] << " "
+				<< doctorName[i] << " "
+				<< specialization[i] << " "
+				<< consultations[i] << endl;
+		}
+
+		outFile.close(); // Close the file
+		cout << "Doctors saved successfully!" << endl;
+	}
+
+	void loadDoctors() {
+		ifstream inFile("doctors.txt"); // Open file for reading
+
+		if (!inFile) {
+			cout << "No existing doctors found. Starting fresh." << endl;
+			return; // Stop if the file doesn't exist
+		}
+
+		doctorCount = 0; // Reset doctor count to load fresh data
+
+		// Read data from the file
+		while (inFile >> doctorID[doctorCount]
+			>> doctorName[doctorCount]
+			>> specialization[doctorCount]
+			>> consultations[doctorCount]) {
+			doctorCount++; // Increment doctor count for each doctor read
+		}
+
+		inFile.close(); // Close the file
+		cout << "Doctors loaded successfully. Total doctors: " << doctorCount << endl;
 	}
 };

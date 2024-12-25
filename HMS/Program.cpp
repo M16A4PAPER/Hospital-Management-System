@@ -179,23 +179,37 @@ void doctorOptions() {
 		cout << "1. Add Doctor" << endl;
 		cout << "2. Assign Doctor to Patient" << endl;
 		cout << "3. Display Doctor Consultation Statistics" << endl;
+		cout << "4. Save Doctors to File" << endl;
+		cout << "5. Load Doctors from File" << endl;
 		cout << "0. Return to Main Menu" << endl;
 		cout << "Enter your choice: ";
 		cin >> choice;
 
 		switch (choice) {
 		case 1:
-			doctorManager.addDoctor();
+			doctorManager.addDoctor(); 
 			break;
+
 		case 2:
-			doctorManager.assignDoctorToPatient();
+			doctorManager.assignDoctorToPatient(); 
 			break;
+
 		case 3:
 			doctorManager.displayConsultationStatistics();
 			break;
+
+		case 4:
+			doctorManager.saveDoctors();
+			break;
+
+		case 5:
+			doctorManager.loadDoctors();
+			break;
+
 		case 0:
 			cout << "Returning to Main Menu..." << endl;
 			break;
+
 		default:
 			cout << "Invalid choice. Please try again." << endl;
 		}
@@ -210,6 +224,9 @@ void patientOptions() {
 		cout << "\nPatient Options Menu:" << endl;
 		cout << "1. Add Patient Details" << endl;
 		cout << "2. Search for Patient Details" << endl;
+		cout << "3. Display All Patients" << endl;
+		cout << "4. Save Patient Details" << endl;
+		cout << "5. Load Patient Details" << endl;
 		cout << "0. Return to Main Menu" << endl;
 		cout << "Enter your choice: ";
 		cin >> choice;
@@ -220,6 +237,15 @@ void patientOptions() {
 			break;
 		case 2:
 			patientManager.searchPatient();
+			break;
+		case 3:
+			patientManager.displayPatients();
+			break;
+		case 4:
+			patientManager.savePatients();
+			break;
+		case 5:
+			patientManager.loadPatients();
 			break;
 		case 0:
 			cout << "Returning to Main Menu..." << endl;
